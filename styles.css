@@ -1,0 +1,540 @@
+/* ==========================================================================
+   David Orozco — Academic website
+   One stylesheet for all pages. Edit the tokens in :root to restyle the site.
+   ========================================================================== */
+
+/* ---------- 1. Design tokens ---------- */
+:root {
+  /* Colour */
+  --paper:        #FBFAF7;   /* page background, warm light */
+  --paper-deep:   #F2F1EC;   /* subtle panels */
+  --ink:          #1D211F;   /* main text */
+  --ink-soft:     #4B524E;   /* secondary text */
+  --ink-faint:    #7A807C;   /* dates, meta */
+  --rule:         #DDDCD5;   /* hairlines */
+  --accent:       #2F5D50;   /* bottle green: the single accent */
+  --accent-dark:  #224238;
+  --accent-tint:  #E6EEEA;
+
+  /* Type */
+  --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans:  "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  /* Scale (roughly a 1.25 ratio) */
+  --fs-small: 0.875rem;
+  --fs-base:  1.125rem;
+  --fs-md:    1.375rem;
+  --fs-lg:    1.75rem;
+  --fs-xl:    2.25rem;
+  --fs-hero:  clamp(2.75rem, 7vw, 5.25rem);
+
+  /* Layout */
+  --page-max:  1120px;
+  --prose-max: 40rem;
+  --gutter:    clamp(1.25rem, 4vw, 3rem);
+  --header-h:  4.25rem;
+}
+
+/* ---------- 2. Reset & base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-padding-top: calc(var(--header-h) + 1.5rem);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { max-width: 100%; display: block; }
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+a:hover { color: var(--accent-dark); text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1em; }
+ul { margin: 0; padding: 0; }
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.5rem;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.5rem 1rem;
+  font-family: var(--sans);
+  z-index: 100;
+}
+.skip-link:focus { left: 0.5rem; }
+
+/* ---------- 3. Header & navigation ---------- */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  background: rgba(251, 250, 247, 0.94);
+  backdrop-filter: saturate(1.2) blur(6px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.site-header.is-scrolled { border-bottom-color: var(--rule); }
+
+.site-header__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.site-name {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+}
+.site-name:hover { color: var(--accent); text-decoration: none; }
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+.site-nav a {
+  font-family: var(--sans);
+  font-size: 0.975rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.35rem 0;
+  border-bottom: 1.5px solid transparent;
+}
+.site-nav a:hover { color: var(--ink); }
+.site-nav a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+/* Mobile menu button (hidden on desktop) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.4rem 0.75rem;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+/* ---------- 4. Page scaffolding ---------- */
+main { padding-top: var(--header-h); }
+
+.wrap {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Page intro used on Research and CV pages */
+.page-intro {
+  padding: clamp(3.5rem, 9vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+  border-bottom: 1px solid var(--rule);
+}
+.page-intro h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+.page-intro p {
+  max-width: var(--prose-max);
+  color: var(--ink-soft);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  margin: 0;
+}
+.page-intro .actions { margin-top: 2rem; }
+
+/* Two-column section: heading on the left, content on the right */
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: 1.5rem 4rem;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+  border-bottom: 1px solid var(--rule);
+}
+.section:last-of-type { border-bottom: 0; }
+
+.section__title {
+  font-size: var(--fs-lg);
+  font-weight: 400;
+  color: var(--ink);
+}
+.section__note {
+  font-family: var(--sans);
+  font-size: var(--fs-small);
+  color: var(--ink-faint);
+  margin-top: 0.6rem;
+  line-height: 1.5;
+}
+
+.section__body { max-width: 44rem; }
+.section__body > p:last-child { margin-bottom: 0; }
+
+.lede {
+  font-size: var(--fs-md);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* ---------- 5. Buttons & links ---------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.7rem 1.35rem;
+  border-radius: 3px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  transition: background-color 0.15s ease;
+}
+.button:hover { background: var(--accent-dark); color: #fff; text-decoration: none; }
+
+.text-link {
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+.text-link:hover { color: var(--accent); }
+
+.icon { width: 1em; height: 1em; flex: none; }
+
+/* ---------- 6. Home hero ---------- */
+.hero {
+  padding: clamp(3.5rem, 10vw, 7.5rem) 0 0;
+}
+.hero__name {
+  font-size: var(--fs-hero);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+.hero__role {
+  margin-top: 1.25rem;
+  max-width: 36rem;
+  font-size: var(--fs-md);
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+/* The price-path line: a stylised "sticky price" series.
+   A nod to David's research on price rigidities and inflation. */
+.price-path {
+  margin: clamp(2rem, 5vw, 3.5rem) 0 0;
+  width: 100%;
+  height: auto;
+  color: var(--accent);
+}
+.price-path path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
+}
+.price-path .baseline { stroke: var(--rule); stroke-width: 1; }
+
+/* Draw the line once on load */
+.js .price-path .series {
+  stroke-dasharray: var(--len, 3000);
+  stroke-dashoffset: var(--len, 3000);
+  animation: draw 2.4s cubic-bezier(0.45, 0.05, 0.25, 1) 0.2s forwards;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.hero__caption {
+  font-family: var(--sans);
+  font-size: var(--fs-small);
+  color: var(--ink-faint);
+  margin: 0.6rem 0 0;
+}
+
+.hero__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 18rem);
+  gap: 2rem 4rem;
+  align-items: start;
+  padding: clamp(2.5rem, 6vw, 4rem) 0;
+  border-bottom: 1px solid var(--rule);
+}
+.hero__intro .lede { margin: 0; max-width: 38rem; }
+
+.fact-list { list-style: none; font-family: var(--sans); font-size: 0.975rem; }
+.fact-list li { padding: 0.55rem 0; border-top: 1px solid var(--rule); }
+.fact-list li:last-child { border-bottom: 1px solid var(--rule); }
+.fact-list span { display: block; color: var(--ink-faint); font-size: var(--fs-small); }
+
+/* ---------- 7. Interest list & tool list ---------- */
+.interest-list { list-style: none; }
+.interest-list li {
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--rule);
+}
+.interest-list li:first-child { border-top: 0; padding-top: 0; }
+.interest-list h3 { font-size: var(--fs-md); margin-bottom: 0.3rem; }
+.interest-list p { margin: 0; color: var(--ink-soft); }
+
+.tool-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 2rem 2.5rem;
+}
+.tool-groups h3 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.tool-groups ul { list-style: none; }
+.tool-groups li {
+  padding: 0.2rem 0;
+  color: var(--ink-soft);
+}
+
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.9rem; }
+.tags li {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--accent-dark);
+  background: var(--accent-tint);
+  padding: 0.15rem 0.6rem;
+  border-radius: 2px;
+}
+
+/* ---------- 8. Projects (Research page) ---------- */
+.project { padding: 2rem 0; border-top: 1px solid var(--rule); }
+.project:first-child { border-top: 0; padding-top: 0; }
+.project:last-child { padding-bottom: 0; }
+.project h3 { font-size: var(--fs-lg); font-weight: 400; margin-bottom: 0.4rem; }
+.project__meta {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--ink-faint);
+  margin-bottom: 0.9rem;
+}
+.project p { color: var(--ink); }
+
+.output-item {
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--accent);
+}
+.output-item h3 { font-size: var(--fs-md); margin-bottom: 0.35rem; }
+.output-item p { margin: 0; color: var(--ink-soft); }
+
+.institutions { list-style: none; }
+.institutions li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 0.25rem 2rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--rule);
+}
+.institutions li:first-child { border-top: 0; padding-top: 0; }
+.institutions strong { font-weight: 500; }
+.institutions span { color: var(--ink-soft); }
+
+/* ---------- 9. CV entries ---------- */
+.entries { list-style: none; }
+.entry {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 0.5rem 2rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--rule);
+}
+.entry:first-child { border-top: 0; padding-top: 0; }
+.entry:last-child { padding-bottom: 0; }
+
+.entry__date {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.2rem;
+}
+.entry__title { font-size: var(--fs-md); font-weight: 500; }
+.entry__org {
+  font-family: var(--sans);
+  font-size: 0.975rem;
+  color: var(--accent-dark);
+  margin: 0.2rem 0 0.75rem;
+}
+.entry__org .place { color: var(--ink-faint); }
+.entry ul { padding-left: 1.1rem; }
+.entry li { margin-bottom: 0.4rem; color: var(--ink-soft); }
+.entry li::marker { color: var(--accent); }
+.entry p { color: var(--ink-soft); margin: 0; }
+
+/* Organisation header grouping several roles */
+.org-group + .org-group { margin-top: 2.5rem; }
+.org-group__name {
+  font-size: var(--fs-lg);
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+}
+.org-group__name small {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--ink-faint);
+  margin-left: 0.5rem;
+  font-weight: 400;
+}
+
+.cert-list {
+  list-style: none;
+  columns: 2 14rem;
+  column-gap: 2.5rem;
+}
+.cert-list li {
+  break-inside: avoid;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-soft);
+}
+
+.lang-list { list-style: none; display: flex; flex-wrap: wrap; gap: 1rem 3rem; }
+.lang-list strong { font-weight: 500; display: block; font-size: var(--fs-md); }
+.lang-list span { font-family: var(--sans); color: var(--ink-faint); }
+
+/* In-page CV contents */
+.cv-contents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+.cv-contents a { color: var(--ink-soft); text-decoration: none; }
+.cv-contents a:hover { color: var(--accent); text-decoration: underline; }
+
+/* ---------- 10. Contact block & footer ---------- */
+.contact-list { list-style: none; font-family: var(--sans); }
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--rule);
+}
+.contact-list li:first-child { border-top: 0; padding-top: 0; }
+.contact-list .icon { color: var(--accent); width: 1.1rem; height: 1.1rem; }
+
+.site-footer {
+  margin-top: 2rem;
+  background: var(--paper-deep);
+  border-top: 1px solid var(--rule);
+}
+.site-footer__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 2.25rem var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--ink-faint);
+}
+.site-footer ul { list-style: none; display: flex; gap: 1.5rem; }
+.site-footer a { color: var(--ink-soft); }
+.site-footer a:hover { color: var(--accent); }
+
+/* ---------- 11. Responsive ---------- */
+@media (max-width: 860px) {
+  .section { grid-template-columns: 1fr; gap: 1.25rem; }
+  .hero__intro { grid-template-columns: 1fr; }
+  .institutions li { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 680px) {
+  .nav-toggle { display: inline-block; }
+  .site-nav {
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    display: none;
+  }
+  .site-nav.is-open { display: block; }
+  .site-nav ul { flex-direction: column; gap: 0; padding: 0.5rem var(--gutter) 1rem; }
+  .site-nav a { display: block; padding: 0.75rem 0; border-bottom: 1px solid var(--rule); }
+  .site-nav li:last-child a { border-bottom: 0; }
+  .site-nav a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--rule); }
+
+  .entry { grid-template-columns: 1fr; gap: 0.25rem; }
+  .org-group__name small { display: block; margin: 0.25rem 0 0; }
+}
+
+/* ---------- 12. Motion & print ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .price-path .series { stroke-dashoffset: 0; }
+}
+
+@media print {
+  .site-header, .site-footer, .nav-toggle, .actions, .cv-contents, .price-path, .hero__caption { display: none !important; }
+  main { padding-top: 0; }
+  body { background: #fff; font-size: 11pt; }
+  .section, .entry { break-inside: avoid; }
+  a { color: inherit; text-decoration: none; }
+}

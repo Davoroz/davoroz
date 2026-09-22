@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>David Orozco | Economist</title>
+  <meta name="description" content="David Orozco is an economist and Master in Development Economics student at Dalhousie University, working on applied microeconomics, health economics, and price dynamics.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts: Newsreader (serif, text and headings) + Source Sans 3 (interface) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Header (same on every page; update aria-current per page) ===== -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-name" href="index.html">David Orozco</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html" aria-current="page">About</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="cv.html">CV</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== Hero ===== -->
+    <section class="wrap hero" aria-labelledby="name">
+      <h1 class="hero__name" id="name">David Orozco</h1>
+      <p class="hero__role">Economist and Master in Development Economics student at Dalhousie University, working with data on health, prices, and economic policy.</p>
+
+      <!-- Decorative sticky-price series. Edit the "d" attribute to change the shape. -->
+      <svg class="price-path" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path class="baseline" d="M0 119.5 H1000"/>
+        <path class="series" d="M0 98 H120 V90 H260 V84 H300 V92 H330 V84 H470 V74 H610 V66 H640 V78 H665 V66 H790 V52 H900 V44 H1000"/>
+      </svg>
+      <p class="hero__caption">A sticky price: long spells of stability, discrete adjustments, and brief sales.</p>
+
+      <div class="hero__intro">
+        <div>
+          <p class="lede">I am an economist trained in Colombia and now based in Halifax, with more than three years of experience turning large-scale data into evidence for strategic and policy decisions. My work spans academic research, central banking, public-sector analysis, and healthcare data.</p>
+          <div class="actions" style="margin-top:2rem">
+            <a class="button" href="assets/cv/David_Orozco_CV.pdf" download>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+              Download CV
+            </a>
+            <a class="text-link" href="mailto:oaorozcod19@gmail.com">Send an email</a>
+            <a class="text-link" href="https://www.linkedin.com/in/davoroz06/" target="_blank" rel="noopener">LinkedIn profile</a>
+          </div>
+        </div>
+        <ul class="fact-list" aria-label="At a glance">
+          <li><span>Currently</span>Master in Development Economics, Dalhousie University</li>
+          <li><span>Teaching</span>Teaching Assistant, Intermediate Microeconomics</li>
+          <li><span>Also</span>Health Data Analyst, IBM</li>
+          <li><span>Based in</span>Halifax, Nova Scotia</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="wrap">
+
+      <!-- ===== Biography ===== -->
+      <section class="section" aria-labelledby="bio">
+        <h2 class="section__title" id="bio">Biography</h2>
+        <div class="section__body">
+          <p>I studied economics at the National University of Colombia in Bogotá. Placing first in the XX National Economics Olympiad, organised by the National Federation of Economics Students (FENADECO), earned me a full scholarship for graduate study, and I went on to complete an MSc in Economics at ICESI University in Cali.</p>
+          <p>Along the way I worked as a research intern at Finagro, forecasting agricultural commodity prices, and at the Central Bank of Colombia, where I helped build a new indicator of inflation perceptions from more than 80 million tweets. At ICESI I spent two years as a research assistant in health economics, building data pipelines and using machine learning to detect anomalies in healthcare billing.</p>
+          <p>A Global Affairs Canada research scholarship brought me to Dalhousie University as a research visitor through the Emerging Leaders in the Americas Program, where I studied price rigidities with high-frequency data. I have since returned to Dalhousie for the Master in Development Economics, supported by the Professor George A.B. Kartsaklis Memorial Scholarship.</p>
+        </div>
+      </section>
+
+      <!-- ===== Research interests ===== -->
+      <section class="section" aria-labelledby="interests">
+        <div>
+          <h2 class="section__title" id="interests">Research interests</h2>
+          <p class="section__note"><a href="research.html">See projects on the Research page</a></p>
+        </div>
+        <div class="section__body">
+          <ul class="interest-list">
+            <li>
+              <h3>Development economics</h3>
+              <p>The focus of my current graduate training at Dalhousie University.</p>
+            </li>
+            <li>
+              <h3>Health economics</h3>
+              <p>Applied, policy-relevant analysis with large administrative and healthcare datasets.</p>
+            </li>
+            <li>
+              <h3>Prices, inflation, and expectations</h3>
+              <p>Price rigidities in high-frequency data and the measurement of inflation perceptions from social media.</p>
+            </li>
+            <li>
+              <h3>Applied microeconomics and econometrics</h3>
+              <p>Rigorous empirical work that turns complex problems into clear, actionable evidence.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== Methods & tools ===== -->
+      <section class="section" aria-labelledby="methods">
+        <h2 class="section__title" id="methods">Methods and tools</h2>
+        <div class="section__body">
+          <div class="tool-groups">
+            <div>
+              <h3>Empirical methods</h3>
+              <ul>
+                <li>Microeconometrics and applied statistics</li>
+                <li>Time-series models (ARIMA, ARCH, GARCH)</li>
+                <li>Machine learning for anomaly detection</li>
+                <li>Natural language processing</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Data work</h3>
+              <ul>
+                <li>Large-scale and high-frequency data</li>
+                <li>Data pipelines and web scraping</li>
+                <li>Data validation and cleaning</li>
+                <li>Reporting and visualisation</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Software</h3>
+              <ul>
+                <li>R and Python (proficient)</li>
+                <li>Stata, SQL, and Excel</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Teaching ===== -->
+      <section class="section" aria-labelledby="teaching">
+        <h2 class="section__title" id="teaching">Teaching</h2>
+        <div class="section__body">
+          <p>My teaching centres on clear, structured explanations of economic and statistical concepts. At Dalhousie University I lead problem-solving sessions in Intermediate Microeconomics for more than 60 undergraduate students and provide timely, constructive feedback on exams and assignments.</p>
+          <p>In Integrated Science I, I taught statistical concepts and introductory programming, guiding students through hands-on analysis of real datasets in R.</p>
+          <ul class="tags" aria-label="Courses">
+            <li>Intermediate Microeconomics, 2025 to present</li>
+            <li>Integrated Science I, 2024</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== Contact ===== -->
+      <section class="section" aria-labelledby="contact">
+        <h2 class="section__title" id="contact">Contact</h2>
+        <div class="section__body">
+          <ul class="contact-list">
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>
+              <a href="mailto:oaorozcod19@gmail.com">oaorozcod19@gmail.com</a>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.06c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.77 2.5 4.77 5.76V21h-4v-5.2c0-1.24-.02-2.84-1.8-2.84-1.8 0-2.6 1.3-2.6 2.75V21h-4V9.75Z"/></svg>
+              <a href="https://www.linkedin.com/in/davoroz06/" target="_blank" rel="noopener">linkedin.com/in/davoroz06</a>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+              <span>Halifax, Nova Scotia, Canada</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===== Footer (same on every page) ===== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>&copy; <span data-year>2026</span> David Orozco</p>
+      <ul>
+        <li><a href="mailto:oaorozcod19@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/davoroz06/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="assets/cv/David_Orozco_CV.pdf" download>CV (PDF)</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
