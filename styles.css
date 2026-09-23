@@ -367,6 +367,16 @@ main { padding-top: var(--header-h); }
   margin-bottom: 0.9rem;
 }
 .project p { color: var(--ink); }
+.project__links {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.75rem;
+}
+.project__links a { display: inline-flex; align-items: center; gap: 0.45rem; }
+.project__links .icon { color: var(--accent); }
 
 .output-item {
   padding-left: 1.25rem;
@@ -493,7 +503,7 @@ main { padding-top: var(--header-h); }
   font-size: 0.95rem;
   color: var(--ink-faint);
 }
-.site-footer ul { list-style: none; display: flex; gap: 1.5rem; }
+.site-footer ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
 .site-footer a { color: var(--ink-soft); }
 .site-footer a:hover { color: var(--accent); }
 
