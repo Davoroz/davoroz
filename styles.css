@@ -15,6 +15,11 @@
   --accent:       #2F5D50;   /* bottle green: the single accent */
   --accent-dark:  #224238;
   --accent-tint:  #E6EEEA;
+  --on-accent:    #FFFFFF;   /* text on accent buttons */
+  --header-bg:    rgba(251, 250, 247, 0.94);
+  --figure-bg:    #FAF8F4;   /* frame behind light-background figures */
+
+  color-scheme: light dark;
 
   /* Type */
   --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -33,6 +38,23 @@
   --prose-max: 40rem;
   --gutter:    clamp(1.25rem, 4vw, 3rem);
   --header-h:  4.25rem;
+}
+
+/* Dark mode: follows the visitor's system setting */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:        #151917;
+    --paper-deep:   #1C211F;
+    --ink:          #E6E8E3;
+    --ink-soft:     #B4BBB6;
+    --ink-faint:    #8D958F;
+    --rule:         #2F3632;
+    --accent:       #7FBDA8;
+    --accent-dark:  #A9D5C5;   /* hover: lighter on dark */
+    --accent-tint:  #1F302A;
+    --on-accent:    #0F1D18;
+    --header-bg:    rgba(21, 25, 23, 0.92);
+  }
 }
 
 /* ---------- 2. Reset & base ---------- */
@@ -98,7 +120,7 @@ ul { margin: 0; padding: 0; }
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 50;
-  background: rgba(251, 250, 247, 0.94);
+  background: var(--header-bg);
   backdrop-filter: saturate(1.2) blur(6px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease;
@@ -235,12 +257,12 @@ main { padding-top: var(--header-h); }
   padding: 0.7rem 1.35rem;
   border-radius: 3px;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   text-decoration: none;
   border: 1px solid var(--accent);
   transition: background-color 0.15s ease;
 }
-.button:hover { background: var(--accent-dark); color: #fff; text-decoration: none; }
+.button:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: var(--on-accent); text-decoration: none; }
 
 .text-link {
   font-family: var(--sans);
@@ -255,7 +277,7 @@ main { padding-top: var(--header-h); }
 
 /* ---------- 6. Home hero ---------- */
 .hero {
-  padding: clamp(3.5rem, 10vw, 7.5rem) 0 0;
+  padding-top: clamp(3.5rem, 10vw, 7.5rem);
 }
 .hero__name {
   font-size: var(--fs-hero);
@@ -397,6 +419,94 @@ main { padding-top: var(--header-h); }
 .institutions strong { font-weight: 500; }
 .institutions span { color: var(--ink-soft); }
 
+/* ---------- 8b. Case studies (Projects page) ---------- */
+.case__question {
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  margin-top: 0;
+}
+.stats {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: 2rem 0;
+}
+.stats li { background: var(--paper); padding: 1rem 1.1rem; }
+.stats strong {
+  display: block;
+  font-size: var(--fs-lg);
+  font-weight: 400;
+  line-height: 1.15;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.stats span {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: var(--sans);
+  font-size: var(--fs-small);
+  line-height: 1.35;
+  color: var(--ink-soft);
+}
+.case h3 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 2.25rem 0 0.6rem;
+}
+.case ul.plain { padding-left: 1.1rem; }
+.case ul.plain li { margin-bottom: 0.45rem; }
+.case ul.plain li::marker { color: var(--accent); }
+
+.figure { margin: 2rem 0; }
+.figure img {
+  width: 100%;
+  height: auto;
+  background: var(--figure-bg);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+.figure figcaption {
+  font-family: var(--sans);
+  font-size: var(--fs-small);
+  color: var(--ink-faint);
+  margin-top: 0.6rem;
+  line-height: 1.45;
+}
+
+.table-scroll { overflow-x: auto; margin: 1rem 0 0.5rem; }
+.data-table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
+.data-table th, .data-table td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  text-align: right;
+}
+.data-table th:first-child, .data-table td:first-child { text-align: left; padding-left: 0; }
+.data-table thead th {
+  font-weight: 600;
+  color: var(--ink-soft);
+  font-size: var(--fs-small);
+  vertical-align: bottom;
+  border-bottom-color: var(--ink-faint);
+}
+.data-table td:first-child small { display: block; color: var(--ink-faint); font-size: 0.85rem; }
+.data-table tfoot td { font-weight: 600; border-bottom: 0; }
+.table-note {
+  font-family: var(--sans);
+  font-size: var(--fs-small);
+  color: var(--ink-faint);
+  margin: 0;
+}
+
 /* ---------- 9. CV entries ---------- */
 .entries { list-style: none; }
 .entry {
@@ -509,7 +619,7 @@ main { padding-top: var(--header-h); }
 
 /* ---------- 11. Responsive ---------- */
 @media (max-width: 860px) {
-  .section { grid-template-columns: 1fr; gap: 1.25rem; }
+  .section { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
   .hero__intro { grid-template-columns: 1fr; }
   .institutions li { grid-template-columns: 1fr; }
 }
@@ -544,6 +654,7 @@ main { padding-top: var(--header-h); }
 @media print {
   .site-header, .site-footer, .nav-toggle, .actions, .cv-contents, .price-path, .hero__caption { display: none !important; }
   main { padding-top: 0; }
+  :root { --paper: #fff; --ink: #000; --ink-soft: #222; --ink-faint: #555; --rule: #ccc; --accent: #2F5D50; --accent-dark: #224238; }
   body { background: #fff; font-size: 11pt; }
   .section, .entry { break-inside: avoid; }
   a { color: inherit; text-decoration: none; }
