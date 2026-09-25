@@ -17,7 +17,7 @@
   --accent-tint:  #E6EEEA;
   --on-accent:    #FFFFFF;   /* text on accent buttons */
   --header-bg:    rgba(251, 250, 247, 0.94);
-  --figure-bg:    #FAF8F4;   /* frame behind light-background figures */
+  --figure-bg:    #FBF9F4;   /* frame behind light-background figures */
 
   color-scheme: light dark;
 
@@ -78,6 +78,7 @@ body {
 }
 
 img, svg { max-width: 100%; display: block; }
+img { height: auto; }
 
 a {
   color: var(--accent);
@@ -464,6 +465,9 @@ main { padding-top: var(--header-h); }
 .figure img {
   width: 100%;
   height: auto;
+  aspect-ratio: 16 / 7;      /* wide, short frame; the chart is centred inside */
+  object-fit: contain;
+  padding: 0.75rem;
   background: var(--figure-bg);
   border: 1px solid var(--rule);
   border-radius: 3px;
@@ -625,6 +629,7 @@ main { padding-top: var(--header-h); }
 }
 
 @media (max-width: 680px) {
+  .figure img { aspect-ratio: auto; padding: 0.25rem; }
   .nav-toggle { display: inline-block; }
   .site-nav {
     position: absolute;
